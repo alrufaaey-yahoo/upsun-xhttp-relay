@@ -1,0 +1,21 @@
+applications:
+  relay:
+    type: 'nodejs:20'
+    runtime:
+      sizing_hints:
+        instance_size: 'S'
+    build:
+      flavor: none
+    web:
+      commands:
+        start: 'npm start'
+      locations:
+        '/':
+          passthru: true
+    mounts:
+      'tmp':
+        source: local
+        source_path: tmp
+      'logs':
+        source: local
+        source_path: logs
